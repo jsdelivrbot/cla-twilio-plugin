@@ -22,11 +22,6 @@ ci.createClass("TwilioConfig", {
             isa: "Str",
             required: true
         },
-        twilioUrl: {
-            is: "rw",
-            isa: "Str",
-            required: true
-        },
         twilioNumber: {
             is: "rw",
             isa: "Str",
