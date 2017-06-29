@@ -51,15 +51,17 @@ The main fields are:
 - **Use default numbers checkbox** - Marked by default so it will use the phone numbers defined in the CI. If not, you will need to write them manually.
 - **Twilio number** - The phone number Twilio will use to make the call. It must include country prefix.
 - **Destination number** - The phone number the Twilio API must call. It must include country prefix.
-- **Correspondance table** - In this array you need to fill the relation between xml variables and topic values. Being the first one the value for the xml and the second one the value in Clarive.
+- **Correspondance table** - In this array you need to fill the relation between xml variables and Clarive variables that will be parsed. Being the first one the value for the xml and the second one the value in Clarive.
 
 Configuration example:
 
     Twilio CI: TwilioConfig-1
     Use default numbers: Checked
-    Correspondance table: title : title
-                          description : description
-                          status : name_status
+    Correspondance table: title : ${title}
+                          description : ${description}
+                          status : ${name_status}
+
+The service will return the Twilio rest api response.
 
 ### Twilio xml
 
@@ -79,4 +81,5 @@ A configuration example for this response is:
     </Say>
   </Response>
 ```
+
 Where all names between '{{}}' are the variables there must always be in the xml code if you want to use them, as those are the variables that will be send by the plugin from the correspondance table.

@@ -5,11 +5,11 @@ reg.register('config.twilio', {
     metadata: [{
         id: 'baseUrl',
         label: 'Base URL',
-        default: "https://{userSid}:{authToken}@api.twilio.com/2010-04-01/"
+        default: "https://${userSid}:${authToken}@api.twilio.com/2010-04-01/"
     }, {
         id: 'makeCall',
         label: 'Make call',
-        default: "Accounts/{userSid}/Calls.json"
+        default: "Accounts/${userSid}/Calls.json"
     }]
 });
 
@@ -30,19 +30,15 @@ reg.register('service.twilio.call', {
         var topicData = ctx.stash("topic_data");
         var topicSelectedMid = topicData.mid;
         var correspondance = params.correspondance || "";
-
         var parameters = "";
-        var topicCollection = db.getCollection("topic");
-        var incident = topicCollection.findOne({
-            mid: topicSelectedMid + ""
-        });
+
 
         if (!incident) {
             log.fatal("Error, topic doesn't exist");
         }
 
         for (var key in correspondance) {
-            parameters += key + "=" + encodeURI(incident[correspondance[key]]) + "&";
+            parameters += key + "=" + encodeURI(correspondance[key]) + "&";
         }
         parameters = parameters.substring(0, parameters.length - 1);
 
@@ -76,25 +72,25 @@ reg.register('service.twilio.call', {
         };
         var config = conf.get("config.twilio");
         var twilioUrl = config.baseUrl + config.makeCall;
-        var valores = twilioUrl.match(/\{(.*?)\}/gi);
+        var valores = twilioUrl.match(/\$\{(.*?)\}/gi);
 
         var configHash = {};
         for (var i = 0; i < valores.length; i++) {
-            configHash[valores[i]] = twilioCi[valores[i].substring(1, valores[i].length - 1)];
+            configHash[valores[i]] = twilioCi[valores[i].substring(2, valores[i].length - 1)];
         }
 
         var replaceString = RegExp(valores.join("|"), "gi");
         var completeUrl = twilioUrl.replace(replaceString, function(matched) {
             return configHash[matched];
         });
-        agent.postForm(completeUrl, {
+        var response = agent.postForm(completeUrl, {
             To: destinationNumber,
             From: twilioNumber,
             Url: responseUrl
         });
 
-        log.info("Call done");
+        log.info("Call done", response);
 
-        return;
+        return response;
     }
 });
