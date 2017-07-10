@@ -1,0 +1,59 @@
+#: init/twilio.js
+msgid "Base URL"
+msgstr "URL base"
+
+#: init/twilio.js
+msgid "Make call"
+msgstr "Hacer llamada"
+
+#: init/twilio.js
+msgid "Twilio call"
+msgstr "Llamada de Twilio"
+
+#: init/twilio.js
+msgid "Error, topic doesn't exist"
+msgstr "Error, el tópico no existe"
+
+#: init/twilio.js
+msgid "Twilio CI doesn't exist"
+msgstr "El CI de Twilio no existe"
+
+#: init/twilio.js
+msgid "Missing fields in Twilio form"
+msgstr "Faltan campos en el formulario de Twilio"
+
+#: init/twilio.js
+msgid "Call done"
+msgstr "Llamada hecha"
+
+#: public/form/twilio-call-form.js
+msgid "Twilio CI"
+msgstr "CI de Twilio"
+
+#: public/form/twilio-call-form.js
+msgid "Use default numbers"
+msgstr "Usar números por defecto"
+
+#: public/form/twilio-call-form.js public/form/twilio-ci-form.js
+msgid "Twilio number"
+msgstr "Número de Twilio"
+
+#: public/form/twilio-call-form.js public/form/twilio-ci-form.js
+msgid "Destination number"
+msgstr "Número de destino"
+
+#: public/form/twilio-call-form.js
+msgid "Correspondance table"
+msgstr "Tabla de correspondencia"
+
+#: public/form/twilio-ci-form.js
+msgid "User SID"
+msgstr "SID de usuario"
+
+#: public/form/twilio-ci-form.js
+msgid "Authentication Token"
+msgstr "Token de autentificación"
+
+#: public/form/twilio-ci-form.js
+msgid "Response Url"
+msgstr "URL de respuesta"

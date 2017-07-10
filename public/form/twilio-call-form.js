@@ -10,7 +10,7 @@
 
     var defaultNumberCheckBox = Cla.ui.checkBox({
         name: 'defaultNumber',
-        fieldLabel: 'Use default numbers',
+        fieldLabel: _('Use default numbers'),
         checked: params.data.defaultNumber || true
     });
 

@@ -4,18 +4,18 @@ reg.register('config.twilio', {
     name: 'Twilio configuration',
     metadata: [{
         id: 'baseUrl',
-        label: 'Base URL',
+        label: _('Base URL'),
         default: "https://${userSid}:${authToken}@api.twilio.com/2010-04-01/"
     }, {
         id: 'makeCall',
-        label: 'Make call',
+        label: _('Make call'),
         default: "Accounts/${userSid}/Calls.json"
     }]
 });
 
 
 reg.register('service.twilio.call', {
-    name: 'Twilio call',
+    name: _('Twilio call'),
     icon: '/plugin/cla-twilio-plugin/icon/twilio.svg',
     form: '/plugin/cla-twilio-plugin/form/twilio-call-form.js',
     handler: function(ctx, params) {
@@ -32,11 +32,6 @@ reg.register('service.twilio.call', {
         var correspondance = params.correspondance || "";
         var parameters = "";
 
-
-        if (!incident) {
-            log.fatal("Error, topic doesn't exist");
-        }
-
         for (var key in correspondance) {
             parameters += key + "=" + encodeURI(correspondance[key]) + "&";
         }
@@ -46,7 +41,7 @@ reg.register('service.twilio.call', {
             mid: twilioCiMid + ""
         });
         if (!twilioCi) {
-            log.fatal("Twilio CI doesn't exist");
+            log.fatal(_("Twilio CI doesn't exist"));
         }
         var userSid = twilioCi.userSid;
         var authToken = twilioCi.authToken;
@@ -63,7 +58,7 @@ reg.register('service.twilio.call', {
         }
 
         if (userSid == "" || authToken == "" || twilioNumber == "" || destinationNumber == "" || templateUrl == "") {
-            log.fatal("Missing fields in Twilio form")
+            log.fatal(_("Missing fields in Twilio form"));
         }
         var responseUrl = templateUrl + "?" + parameters;
         var mapObj = {
@@ -89,7 +84,7 @@ reg.register('service.twilio.call', {
             Url: responseUrl
         });
 
-        log.info("Call done", response);
+        log.info(_("Call done"), response);
 
         return response;
     }
