@@ -2,6 +2,10 @@
 
 Twilio plugin will allow you to create calls from Twilio API remotely from a Clarive instance.
 
+## What is Twilio
+
+Twilio is a cloud communications platform as a service company based in San Francisco, California. Twilio allows software developers to programmatically make and receive phone calls and send and receive text messages using its web service APIs.
+
 ## Requirements
 
 There are no requirements outlined in Clarive in order to work with this plugin.
@@ -20,8 +24,8 @@ It also will create two new variables in Clarive's config list for the main Twil
 ### Clarive config list
 
 The variables created by the plugin are:
-- **config.twilio.baseUrl** - With a default value, where names between '{}' are the variables to get from the TwilioConfig CI
-- **config.twilio.makeCall** - With a default value, where names between '{}' are the variables to get from the TwilioConfig CI
+- **config.twilio.baseUrl** - With a default value, where names between '${}' are the variables to get from the TwilioConfig CI
+- **config.twilio.makeCall** - With a default value, where names between '${}' are the variables to get from the TwilioConfig CI
 
 ### TwilioConfig CI:
 
