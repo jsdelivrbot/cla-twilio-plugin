@@ -1,0 +1,9 @@
+name: Clarive Twilio Plugin
+description: Twilio plugin will allow you to create calls from Twilio API remotely from a Clarive instance.
+version: 1.0
+icon: https://github.com/clarive/cla-twilio-plugin/public/icon/twilio.svg
+url: https://github.com/clarive/cla-twilio-plugin
+requires:
+  - clarive_version: 6.8 <= version
+dependencies:
+  - cla-twilio-plugin
