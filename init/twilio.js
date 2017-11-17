@@ -18,6 +18,29 @@ reg.register('service.twilio.call', {
     name: _('Twilio call'),
     icon: '/plugin/cla-twilio-plugin/icon/twilio.svg',
     form: '/plugin/cla-twilio-plugin/form/twilio-call-form.js',
+    rulebook: {
+        moniker: 'twilio_call',
+        description: _('Twilio calls'),
+        required: ['twilio_resource', 'default_number'],
+        allow: [ 'twilio_resource', 'default_number', 'twilio_number', 'destination_number', 'correspondance'],
+        mapper: {
+            'twilio_resource':'twilioCi',
+            'default_number':'defaultNumber',
+            'twilio_number':'twilioNumber',
+            'destination_number':'destinationNumber'
+        },
+        examples: [{
+            twilio_call: {
+                twilio_resource: 'twilio_resource',
+                default_number: '1',
+                correspondance: {
+                    title : "${title}",
+                    description : "${description}",
+                    status : "${name_status}"
+                }
+            }
+        }]
+    },
     handler: function(ctx, params) {
         var ci = require("cla/ci");
         var log = require('cla/log');
@@ -27,8 +50,6 @@ reg.register('service.twilio.call', {
 
         var agent = web.agent();
         var twilioCiMid = params.twilioCi || "";
-        var topicData = ctx.stash("topic_data");
-        var topicSelectedMid = topicData.mid;
         var correspondance = params.correspondance || "";
         var parameters = "";
 
@@ -49,7 +70,8 @@ reg.register('service.twilio.call', {
         var twilioNumber = "";
         var destinationNumber = "";
 
-        if (params.defaultNumber) {
+
+        if ((params.defaultNumber && params.defaultNumber != '0' && params.defaultNumber != false) && (params.defaultNumber == '1' || params.defaultNumber == true)) {
             twilioNumber = twilioCi.twilioNumber;
             destinationNumber = twilioCi.destinationNumber;
         } else {

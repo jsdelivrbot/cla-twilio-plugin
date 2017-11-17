@@ -5,7 +5,7 @@ ci.createRole("Twilio");
 ci.createClass("TwilioConfig", {
     icon: '/plugin/cla-twilio-plugin/icon/twilio.svg',
     form: '/plugin/cla-twilio-plugin/form/twilio-ci-form.js',
-    roles: ["Twilio"],
+    roles: ["Twilio", "ClariveSE"],
     has: {
         userSid: {
             is: "rw",
