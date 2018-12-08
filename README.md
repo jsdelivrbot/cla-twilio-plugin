@@ -1,6 +1,6 @@
 # Twilio call plugin
 
-<img src="https://cdn.rawgit.com/clarive/cla-twilio-plugin/master/public/icon/twilio.svg?sanitize=true" alt="Twilio Plugin" title="Twilio Plugin" width="120" height="120">
+<img src="https://cdn.jsdelivr.net/gh/clarive/cla-twilio-plugin/public/icon/twilio.svg?sanitize=true" alt="Twilio Plugin" title="Twilio Plugin" width="120" height="120">
 
 Twilio plugin will allow you to create calls from Twilio API remotely from a Clarive instance.
 
